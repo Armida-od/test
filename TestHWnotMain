@@ -1,0 +1,35 @@
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
+public class TestString {
+    private String stringTest;
+
+    public String getStringTest() {
+        return stringTest;
+    }
+
+    public TestString(String stringTest) {
+        this.stringTest = stringTest;
+    }
+
+
+    public String infoString() {
+        String [] splitStr = getStringTest()
+                .split(", ");
+        System.out.println(".......................");
+        System.out.println("split: " + Arrays.toString(splitStr));
+        System.out.println(Arrays.toString(splitStr).charAt(1));
+        Set<String> uniqueStr = new LinkedHashSet<>(List.of(splitStr));
+
+
+        String str = uniqueStr.toString()
+                .replace(", ", "\n")
+                .replaceAll("\\p{Punct}", "");
+        System.out.println("*****************");
+
+ return "";
+}
+
+}
