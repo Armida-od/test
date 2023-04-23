@@ -1,4 +1,5 @@
-import java.util.Arrays;
+package HW10;
+
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,18 +19,24 @@ public class TestString {
     public String infoString() {
         String [] splitStr = getStringTest()
                 .split(", ");
-        System.out.println(".......................");
-        System.out.println("split: " + Arrays.toString(splitStr));
-        System.out.println(Arrays.toString(splitStr).charAt(1));
-        Set<String> uniqueStr = new LinkedHashSet<>(List.of(splitStr));
+        Set<String> uniqueStr = new LinkedHashSet <>(List.of(splitStr));
 
+        char[] arrStr = uniqueStr.toString().toCharArray();
+        for (int i = 1; i < arrStr.length; i++){
+            if(arrStr[i-1] == ' ' && arrStr[i] != ' ')
+                arrStr[i] = Character.toUpperCase(arrStr[i]);
+        }
+        if (arrStr[0] != ' ')
+            arrStr[0] = Character.toUpperCase(arrStr[0]);
 
-        String str = uniqueStr.toString()
+        String stringStr = new String(arrStr)
                 .replace(", ", "\n")
-                .replaceAll("\\p{Punct}", "");
-        System.out.println("*****************");
+                .replaceAll("\\p{Punct}", "")
+                .replace(String.valueOf(arrStr[1]), String.valueOf(arrStr[1]).toUpperCase());
+        System.out.println("****Your list:****");
 
- return "";
+        return stringStr;
 }
 
 }
+
